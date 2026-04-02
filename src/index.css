@@ -53,7 +53,7 @@
 /* Utilities */
 @layer utilities {
   .glass {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10;
+    @apply bg-white/[0.03] backdrop-blur-md border border-white/10 will-change-[backdrop-filter,opacity];
   }
 
   .text-gradient {

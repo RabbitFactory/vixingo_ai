@@ -82,18 +82,19 @@ function FeatureCard({ feature, index }) {
         rotateX: window.innerWidth > 768 ? rotateX : 0,
         transformStyle: "preserve-3d",
       }}
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay: index * 0.05, duration: 0.5 }}
-      className="relative h-96 w-full rounded-3xl bg-white/5 border border-white/5 p-8 group overflow-hidden"
+      transition={{ delay: index * 0.05, duration: 0.4 }}
+      className="relative h-96 w-full rounded-3xl bg-white/5 border border-white/5 p-8 group overflow-hidden will-change-transform"
     >
       <div
         style={{
           transform: "translateZ(75px)",
           transformStyle: "preserve-3d",
+          backfaceVisibility: "hidden"
         }}
-        className="absolute inset-4 flex flex-col items-center justify-center rounded-3xl bg-white/5 shadow-2xl backdrop-blur-sm border border-white/10 p-4"
+        className="absolute inset-4 flex flex-col items-center justify-center rounded-3xl bg-white/[0.02] shadow-2xl backdrop-blur-md border border-white/5 p-4"
       >
         <div 
           style={{ transform: "translateZ(50px)" }}
@@ -116,7 +117,7 @@ function FeatureCard({ feature, index }) {
       </div>
       
       {/* Background glow */}
-      <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-whatsapp-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-whatsapp-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </motion.div>
   );
 }
@@ -146,7 +147,7 @@ export function FeaturesSection() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 perspective-[2000px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {FEATURES.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} />
           ))}
