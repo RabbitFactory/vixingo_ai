@@ -74,7 +74,8 @@
   }
 
   .mobile-static {
-    @apply opacity-100 transform-none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   /* Centering the container manually to be safe */
