@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-whatsapp-green: #25D366;
+  --color-whatsapp-green-dim: #128C7E;
+  --color-bg-dark: #050505;
+  --color-bg-card: #0b1117;
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --animate-marquee: marquee 30s linear infinite;
+  
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+/* Base Styles */
+@layer base {
+  :root {
+    --green: #25D366;
+    --green-dim: #128C7E;
+    --bg: #050505;
+    --text: #f0f4f8;
+    --text-muted: rgba(240, 244, 248, 0.5);
+  }
+
+  body {
+    @apply bg-bg-dark text-[#f0f4f8] font-body overflow-x-hidden antialiased leading-relaxed tracking-[-0.01em];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-[-0.03em] leading-tight;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent;
+  }
+
+  .green-gradient {
+    @apply bg-gradient-to-br from-whatsapp-green to-whatsapp-green-dim;
+  }
+
+  .grain-overlay {
+    @apply fixed inset-0 pointer-events-none z-[9999] opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Centering the container manually to be safe */
+  .container {
+    @apply mx-auto px-6 md:px-12 max-w-7xl;
+  }
+}
